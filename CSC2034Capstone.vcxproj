@@ -141,9 +141,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="S01426313.cpp" />
+    <ClCompile Include="S02366227.cpp" />
+    <ClCompile Include="S02712554cpp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="S01426313.h" />
+    <ClInclude Include="S02366227.h" />
+    <ClInclude Include="S02712554.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

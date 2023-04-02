@@ -21,9 +21,21 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="S02366227.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="S02712554cpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="S01426313.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="S02366227.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="S02712554.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
