@@ -362,8 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# CMakeLists used for JetBrains CLion
+# CLion ignore
+cmake-build-*/
 CMakeLists.txt
+.idea/
 
 # VS Project files
 *.sln
