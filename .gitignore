@@ -364,3 +364,8 @@ FodyWeavers.xsd
 
 # CMakeLists used for JetBrains CLion
 CMakeLists.txt
+
+# VS Project files
+*.sln
+*.vcxproj
+*.vcxproj.filters
