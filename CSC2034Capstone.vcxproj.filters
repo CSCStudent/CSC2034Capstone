@@ -18,13 +18,16 @@
     <ClCompile Include="S01426313.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="S02975463.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="S02366227.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="S02712554cpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="S02712554.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="S02975463.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
