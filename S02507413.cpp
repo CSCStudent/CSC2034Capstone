@@ -2,6 +2,8 @@
 // CSC2034
 // 4/05/2023
 
+#incude "S02507413.h"
+
 // implementation file for student S01426313
 // CSC2034 Spring 2023
 // Capstone project
