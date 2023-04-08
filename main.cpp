@@ -14,6 +14,9 @@ int main() {
 	S02712554::run();
 	S02589931::run();
 	S02507413::run();
+	S02589931::run();
+
+	system("PAUSE");
 
 	return 0;
 }
