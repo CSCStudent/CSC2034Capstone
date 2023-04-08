@@ -5,7 +5,6 @@
 // Capstone project
 namespace S02975463 {
 	void run() {
-
 		std::cout << "hello from S02975463" << std::endl;
 
 	}
