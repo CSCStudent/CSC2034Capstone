@@ -6,6 +6,7 @@
 #include "S02507413.h"
 #include "S02415179.h"
 #include "S02551448.h"
+#include "S02576498.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ int main() {
 	S02589931::run();
 	S02415179::run();
 	S02551448::run();
+	S02576498::run();
 
 	system("PAUSE");
 
