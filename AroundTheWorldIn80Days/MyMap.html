@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+   <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" 
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+</head> 
+<body> 
+   <div id="map" class="map" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; "></div>
+   <script type="text/javascript">
+      var map = L.map('map').setView([0, 0],2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
+         var marker = L.marker([15.300000, -61.400000], {title:'Roseau'}).addTo(map);
+         var marker = L.marker([14.000000, -61.000000], {title:'Castries'}).addTo(map);
+         var marker = L.marker([13.100000, -59.616667], {title:'Bridgetown'}).addTo(map);
+         var marker = L.marker([6.800000, -58.150000], {title:'Georgetown'}).addTo(map);
+         var marker = L.marker([5.833333, -55.166667], {title:'Paramaribo'}).addTo(map);
+         var marker = L.marker([14.916667, -23.516667], {title:'Praia'}).addTo(map);
+         var marker = L.marker([14.733333, -17.633333], {title:'Dakar'}).addTo(map);
+         var marker = L.marker([13.450000, -16.566667], {title:'Banjul'}).addTo(map);
+         var marker = L.marker([11.850000, -15.583333], {title:'Bissau'}).addTo(map);
+         var marker = L.marker([12.650000, -8.000000], {title:'Bamako'}).addTo(map);
+         var marker = L.marker([13.516667, 2.116667], {title:'Niamey'}).addTo(map);
+         var marker = L.marker([6.483333, 2.616667], {title:'Porto-Novo'}).addTo(map);
+         var marker = L.marker([9.083333, 7.533333], {title:'Abuja'}).addTo(map);
+         var marker = L.marker([12.100000, 15.033333], {title:'N_Djamena'}).addTo(map);
+         var marker = L.marker([4.366667, 18.583333], {title:'Bangui'}).addTo(map);
+         var marker = L.marker([4.850000, 31.616667], {title:'Juba'}).addTo(map);
+         var marker = L.marker([9.033333, 38.700000], {title:'Addis Ababa'}).addTo(map);
+         var marker = L.marker([2.066667, 45.333333], {title:'Mogadishu'}).addTo(map);
+         var marker = L.marker([-4.616667, 55.450000], {title:'Victoria'}).addTo(map);
+         var marker = L.marker([4.166667, 73.500000], {title:'Male'}).addTo(map);
+         var marker = L.marker([3.166667, 101.700000], {title:'Kuala Lumpur'}).addTo(map);
+         var marker = L.marker([1.283333, 103.850000], {title:'Singapore'}).addTo(map);
+         var marker = L.marker([-6.166667, 106.816667], {title:'Jakarta'}).addTo(map);
+         var marker = L.marker([-8.583333, 125.600000], {title:'Dili'}).addTo(map);
+         var marker = L.marker([-9.450000, 147.183333], {title:'Port Moresby'}).addTo(map);
+         var marker = L.marker([-9.433333, 159.950000], {title:'Honiara'}).addTo(map);
+         var marker = L.marker([-17.733333, 168.316667], {title:'Port-Vila'}).addTo(map);
+         var marker = L.marker([-18.133333, 178.416667], {title:'Suva'}).addTo(map);
+         var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons8.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}});          var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons9.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}});          var coffeeIcon = new LeafIcon({ iconUrl: 'Data/icons8.png' });         var hintIcon = new LeafIcon({ iconUrl: 'Data/icons9.png' });         var marker = L.marker([-8.516667, 179.216667], {icon: coffeeIcon, title:'Funafuti'}).addTo(map); 
+         var altlatlngs = [[15.300000, -61.400000],[14.000000, -61.000000],[13.100000, -59.616667],[6.800000, -58.150000],[5.833333, -55.166667],[14.916667, -23.516667],[14.733333, -17.633333],[13.450000, -16.566667],[11.850000, -15.583333],[12.650000, -8.000000],[13.516667, 2.116667],[6.483333, 2.616667],[9.083333, 7.533333],[12.100000, 15.033333],[4.366667, 18.583333],[4.850000, 31.616667],[9.033333, 38.700000],[2.066667, 45.333333],[-4.616667, 55.450000],[4.166667, 73.500000],[3.166667, 101.700000],[1.283333, 103.850000],[-6.166667, 106.816667],[-8.583333, 125.600000],[-9.450000, 147.183333],[-9.433333, 159.950000],[-17.733333, 168.316667],[-18.133333, 178.416667]]; 
+         var altpolyline = L.polyline(altlatlngs, { color: 'blue', weight : 5, opacity : 0.7 }).addTo(map); 
+         map.fitBounds(altpolyline.getBounds()); 
+         map.setView([0, 0], 2); 
+   </script> 
+</body> 
+</html>
