@@ -196,6 +196,23 @@ string DataBase::getHtmlMap(vector<int> Path, int FinishPoint, vector<int>NextPo
 			verStr.append(to_string(version));
 		}
 
+	
+	int version_ = version + 1;
+	string verStr_ = "";
+	if (version_ > 99)
+		verStr_.append(to_string(version_));
+	else
+		if (version_ > 9) {
+			verStr_.append("0");
+			verStr_.append(to_string(version_));
+		}
+		else {
+			verStr_.append("00");
+			verStr_.append(to_string(version_));
+		}
+
+
+
 	WIN32_FIND_DATA FindFileData;
 	HANDLE hf;
 	hf = FindFirstFile(L".\\Data\\flag*.png", &FindFileData);
@@ -244,8 +261,8 @@ string DataBase::getHtmlMap(vector<int> Path, int FinishPoint, vector<int>NextPo
 	part1.append("      function sayHello() {\n");
 	//part1.append("         var version = \""+verStr+"\";\n");
 	part1.append("         var img = new Image();\n");
-	part1.append("         img.src = './Data/flag"+ verStr +".png';\n");
-	part1.append("         img.onerror = function(){location.reload()};\n");
+	part1.append("         img.src = './Data/flag"+ verStr_ +".png';\n");
+	part1.append("         img.onload = function(){location.reload()};\n");
 	part1.append("      }\n");
 	part1.append("      setInterval(sayHello, 1000);\n");
 	part1.append("\n");

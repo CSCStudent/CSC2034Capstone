@@ -32,8 +32,10 @@ void myplay(){
 	const string fileOutput = "MyMap.html";
 	
 	DataBase DB;
-	Play P(DB.gatNumberPointsInDataBase());
+	Play P(DB.gatNumberPointsInDataBase()); 
 	
+	cout << "Link to instructions:" << endl;
+	cout << "https://docs.google.com/document/d/1Mx6ddGVIqoPBPrNdS-LfI_t5A3kH009X4oLUZvNc_XI/edit?usp=share_link" << endl << endl;
 	cout << "Your task is to get from " << endl;
 	cout << "    " << DB.getDescriprionSity(P.getStartPoint()) << endl;
 	cout << "to" << endl;
@@ -49,8 +51,8 @@ void myplay(){
 	}
 	out.close();
 
-	//system("MyMap.html");
-	ShellExecute(NULL, NULL, _T("MyMap.html"), NULL, NULL, SW_SHOWNORMAL);
+	system("MyMap.html");
+	//ShellExecute(NULL, NULL, _T("MyMap.html"), NULL, NULL, SW_SHOWNORMAL);
 
 
 	bool GameOver = false;

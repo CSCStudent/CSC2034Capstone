@@ -15,26 +15,31 @@
    <script type="text/javascript">
       function sayHello() {
          var img = new Image();
-         img.src = './Data/flag002.png';
-         img.onerror = function(){location.reload()};
+         img.src = './Data/flag012.png';
+         img.onload = function(){location.reload()};
       }
       setInterval(sayHello, 1000);
 
       var map = L.map('map').setView([0, 0],2);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
-         var marker = L.marker([9.083333, 7.533333], {title:'Abuja'}).addTo(map);
+         var marker = L.marker([-29.316667, 27.483333], {title:'Maseru'}).addTo(map);
+         var marker = L.marker([-54.283333, -36.500000], {title:'King Edward Point'}).addTo(map);
+         var marker = L.marker([-51.700000, -57.850000], {title:'Stanley'}).addTo(map);
+         var marker = L.marker([-34.583333, -58.666667], {title:'Buenos Aires'}).addTo(map);
+         var marker = L.marker([-33.450000, -70.666667], {title:'Santiago'}).addTo(map);
+         var marker = L.marker([-16.500000, -68.150000], {title:'La Paz'}).addTo(map);
+         var marker = L.marker([-15.783333, -47.916667], {title:'Brasilia'}).addTo(map);
+         var marker = L.marker([14.916667, -23.516667], {title:'Praia'}).addTo(map);
+         var marker = L.marker([13.100000, -59.616667], {title:'Bridgetown'}).addTo(map);
+         var marker = L.marker([12.050000, -61.750000], {title:'Saint George_s'}).addTo(map);
          var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons8.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}});
          var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons9.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}});
          var coffeeIcon = new LeafIcon({ iconUrl: 'Data/icons8.png' });
          var hintIcon = new LeafIcon({ iconUrl: 'Data/icons9.png' });
-         var marker = L.marker([-15.416667, 28.283333], {icon: coffeeIcon, title:'Lusaka'}).addTo(map); 
-         var marker = L.marker([6.483333, 2.616667], {icon: hintIcon, title:'Porto-Novo'}).addTo(map); 
-         var marker = L.marker([12.100000, 15.033333], {icon: hintIcon, title:'N_Djamena'}).addTo(map); 
-         var marker = L.marker([3.750000, 8.783333], {icon: hintIcon, title:'Malabo'}).addTo(map); 
-         var marker = L.marker([13.516667, 2.116667], {icon: hintIcon, title:'Niamey'}).addTo(map); 
-         var altlatlngs = [[9.083333, 7.533333]];
+         var marker = L.marker([27.466667, 89.633333], {icon: coffeeIcon, title:'Thimphu'}).addTo(map); 
+         var altlatlngs = [[-29.316667, 27.483333],[-54.283333, -36.500000],[-51.700000, -57.850000],[-34.583333, -58.666667],[-33.450000, -70.666667],[-16.500000, -68.150000],[-15.783333, -47.916667],[14.916667, -23.516667],[13.100000, -59.616667],[12.050000, -61.750000]];
          var altpolyline = L.polyline(altlatlngs, { color: 'blue', weight : 5, opacity : 0.7 }).addTo(map);
-         var altlatlngs2 = [[9.083333, 7.533333],[-15.416667, 28.283333]];
+         var altlatlngs2 = [[-29.316667, 27.483333],[27.466667, 89.633333]];
          var altpolyline2 = L.polyline(altlatlngs2, { color: 'yellow', weight : 5, opacity : 0.7 }).addTo(map);
          map.fitBounds(altpolyline.getBounds());
          map.setView([0, 0], 2);
