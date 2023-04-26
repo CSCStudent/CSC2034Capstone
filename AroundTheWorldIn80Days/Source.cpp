@@ -4,11 +4,31 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <windows.h>
+#include <shellapi.h>
+#include "tchar.h"
 
 using namespace std;
 
-int main() {
+void myplay();
 
+int main(int argc, char* argv[]) {
+
+	if (argc > 1) {
+		cout << "Welcome to the Wolf Casino.  You have chosen to play: " << argv[1] << endl;
+		cout << "Getting game ready." << endl;
+		
+		myplay(); //static function call
+		
+	}
+	else {
+		myplay(); //static function call
+		cout << "Usage: WolfCasinoGame game_to_play" << endl;
+	}
+		
+}
+
+void myplay(){
 	const string fileOutput = "MyMap.html";
 	
 	DataBase DB;
@@ -29,12 +49,13 @@ int main() {
 	}
 	out.close();
 
-	system("MyMap.html");
+	//system("MyMap.html");
+	ShellExecute(NULL, NULL, _T("MyMap.html"), NULL, NULL, SW_SHOWNORMAL);
 
 
 	bool GameOver = false;
 	while(!GameOver) {
-		cout << "-------------------------" << endl;
+		cout << endl << "-------------------------" << endl;
 		cout << "Select your next point:" << endl;
 		NextCitys = DB.getNextSitys(P.getCurrentPoint(), P.getPath());
 		for (int i = 0; i < NextCitys.size(); i++) {
@@ -77,7 +98,5 @@ int main() {
 		out.close();
 
 	}
-
-	return 0;
 
 }

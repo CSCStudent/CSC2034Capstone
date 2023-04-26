@@ -18,6 +18,7 @@ class DataBase
 {
 private:
 	vector<City> Data;
+	int version;
 public:
 	DataBase();
 	~DataBase();

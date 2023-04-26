@@ -6,10 +6,13 @@
 #include <ctime>
 #include <sstream>
 #include <algorithm>
+//#include "stdafx.h"
+#include "windows.h"
 
 using namespace std;
 
 DataBase::DataBase() {
+	version = 0;
 
 	string NameFile = "Data/country_capitals.txt";
 	char delimiter = ',';
@@ -154,12 +157,8 @@ vector<int> DataBase::getNextSitys(int Point, vector<int>SetPoints) {
 	
 	sort(rezult.begin(), rezult.end());
 
-	srand(time(0));
-	int delIndex = rand() % 4;
-
 	vector<int> rezult_;
 	for (int i = 0; i < 4; i++)
-		//if (i != delIndex && rezult[i] != -1)
 		if (rezult[i] != -1)
 			rezult_.push_back(rezult[i]);
 
@@ -182,6 +181,50 @@ string DataBase::getCapital(int Point) {
 }
 
 string DataBase::getHtmlMap(vector<int> Path, int FinishPoint, vector<int>NextPoints) {
+
+	version++;
+	string verStr = "";
+	if (version > 99)
+		verStr.append(to_string(version));
+	else
+		if (version > 9) {
+			verStr.append("0");
+			verStr.append(to_string(version));
+		}
+		else {
+			verStr.append("00");
+			verStr.append(to_string(version));
+		}
+
+	WIN32_FIND_DATA FindFileData;
+	HANDLE hf;
+	hf = FindFirstFile(L".\\Data\\flag*.png", &FindFileData);
+
+	wstring fileWS = FindFileData.cFileName;
+	string  fileSTR(fileWS.begin(), fileWS.end());
+
+	// Initializing a string object
+	string str = ".\\Data\\" + fileSTR;// +fileSTR;//FindFileData.cFileName;//".\\Data\\flag*";
+	
+	// Initializing an object of wstring
+	wstring temp = wstring(str.begin(), str.end());// str.begin(), str.end());
+
+	// Applying c_str() method on temp
+	LPCWSTR src = temp.c_str();
+
+
+	// Initializing a string object
+	string str_ = ".\\Data\\flag"+ verStr +".png";
+
+	// Initializing an object of wstring
+	wstring temp_ = wstring(str_.begin(), str_.end());
+
+	// Applying c_str() method on temp
+	LPCWSTR dst = temp_.c_str();
+
+	
+	MoveFile(src, dst);
+	
 	string part1 = "<!DOCTYPE html> \n";
 	part1.append("<html> \n");
 	part1.append("<head> \n");
@@ -197,6 +240,15 @@ string DataBase::getHtmlMap(vector<int> Path, int FinishPoint, vector<int>NextPo
 	part1.append("<body> \n");
 	part1.append("   <div id=\"map\" class=\"map\" style=\"position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; \"></div>\n");
 	part1.append("   <script type=\"text/javascript\">\n");
+	//part1.append("      var odd = -1;\n");
+	part1.append("      function sayHello() {\n");
+	//part1.append("         var version = \""+verStr+"\";\n");
+	part1.append("         var img = new Image();\n");
+	part1.append("         img.src = './Data/flag"+ verStr +".png';\n");
+	part1.append("         img.onerror = function(){location.reload()};\n");
+	part1.append("      }\n");
+	part1.append("      setInterval(sayHello, 1000);\n");
+	part1.append("\n");
 	part1.append("      var map = L.map('map').setView([0, 0],2);\n");
 	part1.append("      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>'}).addTo(map);\n");
 
@@ -209,31 +261,31 @@ string DataBase::getHtmlMap(vector<int> Path, int FinishPoint, vector<int>NextPo
 		part3.append("[" + getLatLong(i) + "]");
 	}
 
-
-	part2.append("         var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons8.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}}); ");
-	part2.append("         var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons9.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}}); ");
-\
-	part2.append("         var coffeeIcon = new LeafIcon({ iconUrl: 'Data/icons8.png' });");
-	part2.append("         var hintIcon = new LeafIcon({ iconUrl: 'Data/icons9.png' });");
-
+	part2.append("         var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons8.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}});\n");
+	part2.append("         var LeafIcon = L.Icon.extend({options: {shadowUrl: 'Data/icons9.png',iconSize : [48, 48] ,shadowSize : [51, 37] ,iconAnchor : [16, 37] ,shadowAnchor : [16, 37] ,popupAnchor : [0, -30]}});\n");
+	part2.append("         var coffeeIcon = new LeafIcon({ iconUrl: 'Data/icons8.png' });\n");
+	part2.append("         var hintIcon = new LeafIcon({ iconUrl: 'Data/icons9.png' });\n");
 	part2.append("         var marker = L.marker([" + getLatLong(FinishPoint) + "], {icon: coffeeIcon, title:'" + getCapital(FinishPoint) + "'}).addTo(map); \n");
 
-	for(int i : NextPoints)
-		part2.append("         var marker = L.marker([" + getLatLong(i) + "], {icon: hintIcon, title:'" + getCapital(i) + "'}).addTo(map); \n");
-
-
-
+	for (int i : NextPoints) {
+		if (getCapital(i) != "")
+			part2.append("         var marker = L.marker([" + getLatLong(i) + "], {icon: hintIcon, title:'" + getCapital(i) + "'}).addTo(map); \n");
+	}
+		
 	part1.append(part2);
 	part1.append("         var altlatlngs = [");
 	part1.append(part3);
-	part1.append("]; \n");
-
-	part1.append("         var altpolyline = L.polyline(altlatlngs, { color: 'blue', weight : 5, opacity : 0.7 }).addTo(map); \n");
-	part1.append("         map.fitBounds(altpolyline.getBounds()); \n");
-	part1.append("         map.setView([0, 0], 2); \n");
-	part1.append("   </script> \n");
-	part1.append("</body> \n");
+	part1.append("];\n");
+	part1.append("         var altpolyline = L.polyline(altlatlngs, { color: 'blue', weight : 5, opacity : 0.7 }).addTo(map);\n");
+	part1.append("         var altlatlngs2 = [[" + getLatLong(Path[0]) + "],[" + getLatLong(FinishPoint) + "]];\n");
+	part1.append("         var altpolyline2 = L.polyline(altlatlngs2, { color: 'yellow', weight : 5, opacity : 0.7 }).addTo(map);\n");
+	part1.append("         map.fitBounds(altpolyline.getBounds());\n");
+	part1.append("         map.setView([0, 0], 2);\n");
+	part1.append("   </script>\n");
+	part1.append("</body>\n");
 	part1.append("</html>");
+
+	
 
 	return part1;
 
